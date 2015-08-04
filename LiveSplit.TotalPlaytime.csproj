@@ -68,6 +68,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UI\Components\TotalPlaytimeSettings.ja-JP.resx">
+      <DependentUpon>TotalPlaytimeSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\TotalPlaytimeSettings.resx">
       <DependentUpon>TotalPlaytimeSettings.cs</DependentUpon>
     </EmbeddedResource>
