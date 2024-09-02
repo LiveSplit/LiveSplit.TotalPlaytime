@@ -174,5 +174,8 @@ public class TotalPlaytimeComponent : IComponent
         InternalComponent.Dispose();
     }
 
-    public int GetSettingsHashCode() => Settings.GetSettingsHashCode();
+    public int GetSettingsHashCode()
+    {
+        return Settings.GetSettingsHashCode();
+    }
 }

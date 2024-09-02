@@ -13,7 +13,10 @@ public class TotalPlaytimeFactory : IComponentFactory
 
     public string ComponentName => "Total Playtime";
 
-    public IComponent Create(LiveSplitState state) => new TotalPlaytimeComponent(state);
+    public IComponent Create(LiveSplitState state)
+    {
+        return new TotalPlaytimeComponent(state);
+    }
 
     public string Description => "Shows the total playtime for running with these splits.";
 
