@@ -137,8 +137,7 @@ public class TotalPlaytimeComponent : IComponent
 
                 foreach (var segment in state.Run)
                 {
-                    Time segmentHistoryElement;
-                    if (segment.SegmentHistory.TryGetValue(attempt.Index, out segmentHistoryElement) && segmentHistoryElement.RealTime.HasValue)
+                    if (segment.SegmentHistory.TryGetValue(attempt.Index, out Time segmentHistoryElement) && segmentHistoryElement.RealTime.HasValue)
                     {
                         totalPlaytime += segmentHistoryElement.RealTime.Value;
                     }
