@@ -119,11 +119,11 @@ public class TotalPlaytimeComponent : IComponent
 
     public TimeSpan CalculateTotalPlaytime(LiveSplitState state)
     {
-        var totalPlaytime = TimeSpan.Zero;
+        TimeSpan totalPlaytime = TimeSpan.Zero;
 
-        foreach (var attempt in state.Run.AttemptHistory)
+        foreach (Attempt attempt in state.Run.AttemptHistory)
         {
-            var duration = attempt.Duration;
+            TimeSpan? duration = attempt.Duration;
 
             if (duration.HasValue)
             {
@@ -135,7 +135,7 @@ public class TotalPlaytimeComponent : IComponent
                 //Must be < 1.6.0 and a reset
                 //Calculate the sum of the segments for that run
 
-                foreach (var segment in state.Run)
+                foreach (ISegment segment in state.Run)
                 {
                     if (segment.SegmentHistory.TryGetValue(attempt.Index, out Time segmentHistoryElement) && segmentHistoryElement.RealTime.HasValue)
                     {
