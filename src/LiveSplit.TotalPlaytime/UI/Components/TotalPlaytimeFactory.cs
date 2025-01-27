@@ -24,7 +24,7 @@ public class TotalPlaytimeFactory : IComponentFactory
 
     public string UpdateURL => "http://livesplit.org/update/";
 
-    public Version Version => Version.Parse("1.8.29");
+    public Version Version => Version.Parse("1.8.30");
 
     public string UpdateName => ComponentName;
 }
