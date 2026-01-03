@@ -26,6 +26,8 @@ public partial class TotalPlaytimeSettings : UserControl
     public LiveSplitState CurrentState { get; set; }
     public bool Display2Rows { get; set; }
     public bool ShowTotalHours { get; set; }
+    public bool ShowMinutes { get; set; }
+    public bool ShowSeconds { get; set; }
 
     public LayoutMode Mode { get; set; }
 
@@ -42,6 +44,8 @@ public partial class TotalPlaytimeSettings : UserControl
         BackgroundGradient = GradientType.Plain;
         Display2Rows = false;
         ShowTotalHours = false;
+        ShowMinutes = true;
+        ShowSeconds = true;
 
         chkOverrideTextColor.DataBindings.Add("Checked", this, "OverrideTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
         btnTextColor.DataBindings.Add("BackColor", this, "TextColor", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -51,6 +55,13 @@ public partial class TotalPlaytimeSettings : UserControl
         btnColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
         btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
         chkShowTotalHours.DataBindings.Add("Checked", this, "ShowTotalHours", false, DataSourceUpdateMode.OnPropertyChanged);
+        chkShowMinutes.DataBindings.Add("Checked", this, "ShowMinutes", false, DataSourceUpdateMode.OnPropertyChanged);
+        chkShowSeconds.DataBindings.Add("Checked", this, "ShowSeconds", false, DataSourceUpdateMode.OnPropertyChanged);
+    }
+
+    private void chkShowMinutes_CheckedChanged(object sender, EventArgs e)
+    {
+        chkShowSeconds.Enabled = chkShowMinutes.Checked;
     }
 
     private void chkOverrideTimeColor_CheckedChanged(object sender, EventArgs e)
@@ -101,6 +112,8 @@ public partial class TotalPlaytimeSettings : UserControl
         GradientString = SettingsHelper.ParseString(element["BackgroundGradient"]);
         Display2Rows = SettingsHelper.ParseBool(element["Display2Rows"]);
         ShowTotalHours = SettingsHelper.ParseBool(element["ShowTotalHours"], false);
+        ShowMinutes= SettingsHelper.ParseBool(element["ShowMinutes"], true);
+        ShowSeconds = SettingsHelper.ParseBool(element["ShowSeconds"], true);
     }
 
     public XmlNode GetSettings(XmlDocument document)
@@ -126,7 +139,9 @@ public partial class TotalPlaytimeSettings : UserControl
         SettingsHelper.CreateSetting(document, parent, "BackgroundColor2", BackgroundColor2) ^
         SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient) ^
         SettingsHelper.CreateSetting(document, parent, "Display2Rows", Display2Rows) ^
-        SettingsHelper.CreateSetting(document, parent, "ShowTotalHours", ShowTotalHours);
+        SettingsHelper.CreateSetting(document, parent, "ShowTotalHours", ShowTotalHours) ^
+        SettingsHelper.CreateSetting(document, parent, "ShowMinutes", ShowMinutes) ^
+        SettingsHelper.CreateSetting(document, parent, "ShowSeconds", ShowSeconds);
     }
 
     private void ColorButtonClick(object sender, EventArgs e)

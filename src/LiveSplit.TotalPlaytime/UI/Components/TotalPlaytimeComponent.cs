@@ -12,14 +12,14 @@ namespace LiveSplit.UI.Components;
 
 public class TotalPlaytimeComponent : IComponent
 {
-    protected ITimeFormatter HoursTimeFormatter { get; set; }
-    protected ITimeFormatter DaysTimeFormatter { get; set; }
+    protected TotalTimeFormatter Formatter { get; set; }
     protected InfoTimeComponent InternalComponent { get; set; }
     protected TotalPlaytimeSettings Settings { get; set; }
 
     protected TimerPhase LastPhase { get; set; }
     protected int LastAttemptCount { get; set; }
     protected IRun LastRun { get; set; }
+    protected GraphicsCache Cache { get; set; }
 
     public string ComponentName => "Total Playtime";
 
@@ -43,13 +43,14 @@ public class TotalPlaytimeComponent : IComponent
 
     public TotalPlaytimeComponent(LiveSplitState state)
     {
-        HoursTimeFormatter = new RegularTimeFormatter();
-        DaysTimeFormatter = new DaysTimeFormatter();
-        InternalComponent = new InfoTimeComponent("Total Playtime", TimeSpan.Zero, DaysTimeFormatter);
+        Formatter = new TotalTimeFormatter();
+        InternalComponent = new InfoTimeComponent("Total Playtime", TimeSpan.Zero, Formatter);
         Settings = new TotalPlaytimeSettings()
         {
             CurrentState = state
         };
+
+        Cache = new GraphicsCache();
     }
 
     private void DrawBackground(Graphics g, LiveSplitState state, float width, float height)
@@ -152,8 +153,6 @@ public class TotalPlaytimeComponent : IComponent
 
     public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
     {
-        InternalComponent.Formatter = Settings.ShowTotalHours ? HoursTimeFormatter : DaysTimeFormatter;
-
         if (LastAttemptCount != state.Run.AttemptHistory.Count
             || LastPhase != state.CurrentPhase
             || LastRun != state.Run
@@ -165,6 +164,17 @@ public class TotalPlaytimeComponent : IComponent
             LastAttemptCount = state.Run.AttemptHistory.Count;
             LastPhase = state.CurrentPhase;
             LastRun = state.Run;
+        }
+
+        Cache.Restart();
+        Cache["ShowTotalHours"] = Formatter.ShowTotalHours = Settings.ShowTotalHours;
+        Cache["ShowMinutes"] = Formatter.ShowMinutes = Settings.ShowMinutes;
+        Cache["ShowSeconds"] = Formatter.ShowSeconds = Settings.ShowSeconds;
+
+        if (Cache.HasChanged)
+        {
+            InternalComponent.Formatter = null;
+            InternalComponent.Formatter = Formatter;
         }
 
         InternalComponent.Update(invalidator, state, width, height, mode);
