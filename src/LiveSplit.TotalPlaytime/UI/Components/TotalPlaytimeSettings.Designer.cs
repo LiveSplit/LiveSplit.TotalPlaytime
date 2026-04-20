@@ -45,6 +45,8 @@
             this.btnColor2 = new System.Windows.Forms.Button();
             this.chkTwoRows = new System.Windows.Forms.CheckBox();
             this.chkShowTotalHours = new System.Windows.Forms.CheckBox();
+            this.chkShowMinutes = new System.Windows.Forms.CheckBox();
+            this.chkShowSeconds = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -59,23 +61,26 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.cmbGradientType, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnColor1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnColor2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.chkTwoRows, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.chkShowTotalHours, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chkShowMinutes, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.chkShowSeconds, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 225);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 254);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox1
@@ -86,7 +91,7 @@
             this.groupBox1.Location = new System.Drawing.Point(3, 61);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(456, 77);
-            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Text Color";
             // 
@@ -153,7 +158,7 @@
             this.groupBox2.Location = new System.Drawing.Point(3, 144);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(456, 78);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Time Color";
             // 
@@ -267,7 +272,7 @@
             this.chkTwoRows.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.chkTwoRows.Name = "chkTwoRows";
             this.chkTwoRows.Size = new System.Drawing.Size(149, 17);
-            this.chkTwoRows.TabIndex = 36;
+            this.chkTwoRows.TabIndex = 3;
             this.chkTwoRows.Text = "Display 2 Rows";
             this.chkTwoRows.UseVisualStyleBackColor = true;
             // 
@@ -279,9 +284,33 @@
             this.chkShowTotalHours.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.chkShowTotalHours.Name = "chkShowTotalHours";
             this.chkShowTotalHours.Size = new System.Drawing.Size(235, 17);
-            this.chkShowTotalHours.TabIndex = 37;
+            this.chkShowTotalHours.TabIndex = 4;
             this.chkShowTotalHours.Text = "Show Total Hours";
             this.chkShowTotalHours.UseVisualStyleBackColor = true;
+            // 
+            // chkShowMinutes
+            // 
+            this.chkShowMinutes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkShowMinutes.AutoSize = true;
+            this.chkShowMinutes.Location = new System.Drawing.Point(7, 59);
+            this.chkShowMinutes.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkShowMinutes.Name = "chkShowMinutes";
+            this.chkShowMinutes.Size = new System.Drawing.Size(149, 17);
+            this.chkShowMinutes.TabIndex = 5;
+            this.chkShowMinutes.Text = "Show Minutes";
+            this.chkShowMinutes.UseVisualStyleBackColor = true;
+            // 
+            // chkShowSeconds
+            // 
+            this.chkShowSeconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkShowSeconds.AutoSize = true;
+            this.chkShowSeconds.Location = new System.Drawing.Point(224, 59);
+            this.chkShowSeconds.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkShowSeconds.Name = "chkShowSeconds";
+            this.chkShowSeconds.Size = new System.Drawing.Size(235, 17);
+            this.chkShowSeconds.TabIndex = 6;
+            this.chkShowSeconds.Text = "Show Seconds";
+            this.chkShowSeconds.UseVisualStyleBackColor = true;
             // 
             // TotalPlaytimeSettings
             // 
@@ -290,7 +319,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TotalPlaytimeSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
-            this.Size = new System.Drawing.Size(476, 239);
+            this.Size = new System.Drawing.Size(476, 268);
             this.Load += new System.EventHandler(this.TotalPlaytimeSettings_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -323,5 +352,7 @@
         private System.Windows.Forms.Button btnColor2;
         private System.Windows.Forms.CheckBox chkTwoRows;
         private System.Windows.Forms.CheckBox chkShowTotalHours;
+        private System.Windows.Forms.CheckBox chkShowMinutes;
+        private System.Windows.Forms.CheckBox chkShowSeconds;
     }
 }
